@@ -79,7 +79,7 @@ configmap.reloader.stakater.com/reload: "{{ include "mail.fullname" . }}"
 {{/*
 Return the secret containing HTTPS/TLS certificates
 */}}
-{{- define "tls.SecretName" -}}
+{{- define "tls.secretName" -}}
 {{- $secretName := .Values.certs.existingSecret -}}
 {{- if $secretName -}}
     {{- printf "%s" (tpl $secretName .) -}}  # Use '.' for context, not '$'
