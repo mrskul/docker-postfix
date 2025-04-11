@@ -13,7 +13,7 @@ inputs:
     required: true
 
 env:
-  DOCKERHUB_REPO: ${{ inputs.DOCKER_USERNAME }}/postfix-exporter
+  DOCKERHUB_REPO: mrskul/postfix-exporter
 
 runs:
   using: "composite"

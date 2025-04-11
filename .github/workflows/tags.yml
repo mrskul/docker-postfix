@@ -49,8 +49,8 @@ jobs:
         with:
           DOCKER_ACCESS_TOKEN: '${{ secrets.DOCKER_ACCESS_TOKEN }}'
           tags: |
-            ${{ inputs.DOCKER_USERNAME }}/postfix-exporter:latest
-            ${{ inputs.DOCKER_USERNAME }}/postfix-exporter:edge
+            mrskul/postfix-exporter:latest
+            mrskul/postfix-exporter:edge
 
   Build_Alpine:
     runs-on: ubuntu-latest
@@ -92,9 +92,9 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ inputs.DOCKER_USERNAME }}/postfix:latest-alpine
-            ${{ inputs.DOCKER_USERNAME }}/postfix:${{ env.RELEASE_VERSION }}-alpine
-            ${{ inputs.DOCKER_USERNAME }}/postfix:${{ env.RELEASE_VERSION_NO_v }}-alpine
+            mrskul/postfix:latest-alpine
+            mrskul/postfix:${{ env.RELEASE_VERSION }}-alpine
+            mrskul/postfix:${{ env.RELEASE_VERSION_NO_v }}-alpine
           # linux/s390x: "rsyslog (no such package)"
           # Latest Alpine does not have all packages for 386 any more :-(
           platforms: "linux/arm/v6,linux/arm/v7,linux/ppc64le,linux/amd64,linux/arm64"
@@ -144,9 +144,9 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ inputs.DOCKER_USERNAME }}/postfix:latest-ubuntu
-            ${{ inputs.DOCKER_USERNAME }}/postfix:${{ env.RELEASE_VERSION }}-ubuntu
-            ${{ inputs.DOCKER_USERNAME }}/postfix:${{ env.RELEASE_VERSION_NO_v }}-ubuntu
+            mrskul/postfix:latest-ubuntu
+            mrskul/postfix:${{ env.RELEASE_VERSION }}-ubuntu
+            mrskul/postfix:${{ env.RELEASE_VERSION_NO_v }}-ubuntu
           platforms: "linux/arm/v7,linux/amd64,linux/arm64,linux/ppc64le,linux/s390x"
           cache-from: type=local,src=/tmp/.buildx-cache/ubuntu,mode=max,compression=estargz
           cache-to: type=local,dest=/tmp/.buildx-cache-new/ubuntu
@@ -194,12 +194,12 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ inputs.DOCKER_USERNAME }}/postfix:latest
-            ${{ inputs.DOCKER_USERNAME }}/postfix:latest-debian
-            ${{ inputs.DOCKER_USERNAME }}/postfix:${{ env.RELEASE_VERSION }}
-            ${{ inputs.DOCKER_USERNAME }}/postfix:${{ env.RELEASE_VERSION_NO_v }}
-            ${{ inputs.DOCKER_USERNAME }}/postfix:${{ env.RELEASE_VERSION }}-debian
-            ${{ inputs.DOCKER_USERNAME }}/postfix:${{ env.RELEASE_VERSION_NO_v }}-debian
+            mrskul/postfix:latest
+            mrskul/postfix:latest-debian
+            mrskul/postfix:${{ env.RELEASE_VERSION }}
+            mrskul/postfix:${{ env.RELEASE_VERSION_NO_v }}
+            mrskul/postfix:${{ env.RELEASE_VERSION }}-debian
+            mrskul/postfix:${{ env.RELEASE_VERSION_NO_v }}-debian
           platforms: "linux/386,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/amd64,linux/arm64,linux/mips64le,linux/ppc64le,linux/s390x"
           cache-from: type=local,src=/tmp/.buildx-cache/debian,mode=max,compression=estargz
           cache-to: type=local,dest=/tmp/.buildx-cache-new/debian
@@ -266,7 +266,7 @@ jobs:
       - name: Create helm chart index
         uses: WyriHaximus/github-action-helm3@v4
         with:
-          exec: cd gh-pages && rm -rf .git && helm repo index . --url https://${{ inputs.DOCKER_USERNAME }}san.github.io/docker-postfix
+          exec: cd gh-pages && rm -rf .git && helm repo index . --url https://mrskulsan.github.io/docker-postfix
 
       - name: Upload gh-pages
         uses: peaceiris/actions-gh-pages@v4
