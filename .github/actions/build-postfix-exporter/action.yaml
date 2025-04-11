@@ -5,9 +5,6 @@ inputs:
   DOCKER_ACCESS_TOKEN:
     description: 'DOCKER_ACCESS_TOKEN'
     required: true
-  DOCKER_USERNAME :
-    description: 'DOCKER_USERNAME'
-    required: true
   tags:
     description: 'Docker image tags'
     required: true
