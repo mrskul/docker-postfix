@@ -76,3 +76,14 @@ checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . |
 configmap.reloader.stakater.com/reload: "{{ include "mail.fullname" . }}"
 {{- end -}}
 
+{{/*
+Return the secret containing HTTPS/TLS certificates
+*/}}
+{{- define "tls.secretName" -}}
+{{- $secretName := .Values.certs.existingSecret -}}
+{{- if $secretName -}}
+    {{- printf "%s" (tpl $secretName .) -}}  # Use '.' for context, not '$'
+{{- else -}}
+    {{- printf "smtp-relay-mail-certs" -}}
+{{- end -}}
+{{- end -}}

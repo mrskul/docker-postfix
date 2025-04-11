@@ -129,6 +129,8 @@ certs:
   create: false
   # Provide existing cert
   existing: false
+  # Provide existing secret name
+  existingSecret: ""
 
 # Define data which should be stored in a Secret
 # (and shared with the pod as environment variables)

@@ -195,7 +195,7 @@ spec:
             defaultMode: 0755
         - name: certs
           secret:
-            secretName: {{ $fullName }}-certs
+            secretName: {{ include "tls.secretName" . }}
         {{- end }}
         # Socket directories
         {{- if and .Values.persistence.enabled .Values.persistence.existingClaim }}
