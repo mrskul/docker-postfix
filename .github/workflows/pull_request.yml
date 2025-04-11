@@ -70,8 +70,8 @@ jobs:
           context: .
           push: false
           tags: |
-            '${{ inputs.DOCKER_USERNAME }}'/postfix:latest
-            '${{ inputs.DOCKER_USERNAME }}'/postfix:latest-alpine
+            ${{ inputs.DOCKER_USERNAME }}/postfix:latest
+            ${{ inputs.DOCKER_USERNAME }}/postfix:latest-alpine
           platforms: "linux/amd64"
           cache-from: type=local,src=/tmp/.buildx-cache/alpine
 
