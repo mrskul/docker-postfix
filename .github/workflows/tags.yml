@@ -266,7 +266,7 @@ jobs:
       - name: Create helm chart index
         uses: WyriHaximus/github-action-helm3@v4
         with:
-          exec: cd gh-pages && rm -rf .git && helm repo index . --url https://mrskulsan.github.io/docker-postfix
+          exec: cd gh-pages && rm -rf .git && helm repo index . --url https://mrskul.github.io/docker-postfix
 
       - name: Upload gh-pages
         uses: peaceiris/actions-gh-pages@v4
@@ -276,6 +276,7 @@ jobs:
           tag_name: gh-pages-${{ env.RELEASE_VERSION }}
 
       - name: Create Release
+        if: steps.check_release.outputs.exists == 'false'
         id: create_release
         uses: actions/create-release@v1
         env:
