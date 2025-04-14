@@ -82,7 +82,7 @@ Return the secret containing HTTPS/TLS certificates
 {{- define "tls.secretName" -}}
 {{- $secretName := .Values.certs.existingSecret -}}
 {{- if $secretName -}}
-    {{- printf "%s" (tpl $secretName .) -}}  # Use '.' for context, not '$'
+    {{- printf "%s" (tpl $secretName .) -}}
 {{- else -}}
     {{- printf "smtp-relay-mail-certs" -}}
 {{- end -}}
