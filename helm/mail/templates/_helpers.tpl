@@ -84,6 +84,6 @@ Return the secret containing HTTPS/TLS certificates
 {{- if $secretName -}}
     {{- printf "%s" (tpl $secretName .) -}}
 {{- else -}}
-    {{- printf "smtp-relay-mail-certs" -}}
+    {{- printf "%s-certs" (include "mail.fullname" .) -}}
 {{- end -}}
 {{- end -}}
