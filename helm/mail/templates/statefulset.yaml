@@ -188,7 +188,7 @@ spec:
       volumes:
         - name: tmp
           emptyDir: {}
-        {{- if .Values.certs.create }}
+        {{- if or .Values.certs.create .Values.certs.existingSecret }}
         - name: certs-init
           configMap:
             name: {{ $fullName }}
