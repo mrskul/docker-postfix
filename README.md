@@ -640,7 +640,6 @@ Chart configuration is as follows:
 | `tolerations` | `[]` | Standard Kubernetes stuff |
 | `affinity` | `{}` | Standard Kubernetes stuff |
 | `certs.create` | `false` | Auto generate TLS certificates for Postfix |
-| `certs.existing` | `false` | Use existing TLS certificates for Postfix |
 | `certs.existingSecret` | `""` | Existing secret containing the TLS certificates for Postfix |
 | `extraVolumes` | `[]` | Append any extra volumes to the pod |
 | `extraVolumeMounts` | `[]` | Append any extra volume mounts to the postfix container |

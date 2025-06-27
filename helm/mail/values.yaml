@@ -127,8 +127,6 @@ container:
 certs:
   # Auto-generate certificates for the server and mount them into Postfix volume
   create: false
-  # Provide existing cert
-  existing: false
   # Provide existing secret name
   existingSecret: ""
 
