@@ -117,7 +117,7 @@ spec:
               subPath: logrotate.sh
             {{- end }}
             {{- end }}
-            {{- if .Values.certs.create }}
+            {{- if or .Values.certs.create .Values.certs.existingSecret }}
             - name: certs
               mountPath: /var/run/certs
               readOnly: true
